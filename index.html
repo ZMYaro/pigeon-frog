@@ -52,22 +52,37 @@
 			var MIN_PIGEON_DELAY = 100,
 				MAX_PIGEON_DELAY = 5000;
 			
+			/**
+			 * Initialize controls and queue up the first “Pigeon!”.
+			 */
 			function init() {
 				document.getElementById('frog-btn').addEventListener('click', sayFrog);
 				document.getElementById('info-btn').addEventListener('click', showAbout);
 				scheduleNextPigeon();
 			}
+			/**
+			 * Set the next “Pigeon!” to appear after a random amount of time.
+			 */
 			function scheduleNextPigeon() {
 				var time = (Math.random() * (MAX_PIGEON_DELAY - MIN_PIGEON_DELAY)) + MIN_PIGEON_DELAY;
 				setTimeout(sayPigeon, time);
 			}
+			/**
+			 * Display the “Pigeon!” text and “Frog!” button.
+			 */
 			function sayPigeon() {
 				document.body.classList.add('pigeon');
 			}
+			/**
+			 * Hide the “Pigeon!” text and “Frog!” button, and schedule the next “Pigeon!”.
+			 */
 			function sayFrog() {
 				document.body.classList.remove('pigeon');
 				scheduleNextPigeon();
 			}
+			/**
+			 * Show a pop-up with information about this “game”.
+			 */
 			function showAbout() {
 				alert('Instructions: When it says \u201cPigeon!\u201d, you say \u201cFrog!\u201d\r\n\r\nCoded up by Zachary Yaro, based on a random late-night shenanigan with Denny and Kimmy.');
 			}
