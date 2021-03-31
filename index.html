@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+			body {
+				text-align: center;
+				padding-bottom: 2em;
+			}
+			#pigeon-txt,
+			#frog-btn {
+				display: none;
+				
+				font-size: 4em;
+				font-weight: bold;
+				font-style: italic;
+			}
+			.pigeon #pigeon-txt,
+			.pigeon #frog-btn {
+				display: inline-block;
+			}
+			#info-btn {
+				position: fixed;
+				left: 2px;
+				bottom: 2px;
+			}
+		</style>
+		<script type="text/javascript">
+			// In milliseconds.
+			var MIN_PIGEON_DELAY = 100,
+				MAX_PIGEON_DELAY = 5000;
+			
+			function init() {
+				document.getElementById('frog-btn').addEventListener('click', sayFrog);
+				document.getElementById('info-btn').addEventListener('click', showAbout);
+				scheduleNextPigeon();
+			}
+			function scheduleNextPigeon() {
+				var time = (Math.random() * (MAX_PIGEON_DELAY - MIN_PIGEON_DELAY)) + MIN_PIGEON_DELAY;
+				setTimeout(sayPigeon, time);
+			}
+			function sayPigeon() {
+				document.body.classList.add('pigeon');
+			}
+			function sayFrog() {
+				document.body.classList.remove('pigeon');
+				scheduleNextPigeon();
+			}
+			function showAbout() {
+				alert('Instructions: When it says \u201cPigeon!\u201d, you say \u201cFrog!\u201d\r\n\r\nCoded up by Zachary Yaro, based on a random late-night shenanigan with Denny and Kimmy.');
+			}
+			window.addEventListener('load', init);
+		</script>
+	</head>
+	<body>
+		<h1>I say “pigeon”, you say “frog”!</h1>
+		<br />
+		<h2 id="pigeon-txt">Pigeon!</h2>
+		<br />
+		<button id="frog-btn">Frog!</button>
+		<button id="info-btn">&#x24d8;</button>
+	</body>
+</html>
