@@ -23,6 +23,18 @@
 				left: 2px;
 				bottom: 2px;
 			}
+			
+			@media (prefers-color-scheme: dark) {
+				body {
+					background: black;
+					color: white;
+				}
+				button {
+					-webkit-filter: invert(1);
+					   -moz-filter: invert(1);
+					        filter: invert(1);
+				}
+			}
 		</style>
 		<script type="text/javascript">
 			// In milliseconds.
